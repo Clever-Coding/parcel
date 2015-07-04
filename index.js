@@ -20,6 +20,4 @@ function create(in_dir, out_dir) {
   })
 }
 
-create('.');
-
 module.exports = create;
