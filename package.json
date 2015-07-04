@@ -1,0 +1,25 @@
+{
+  "name": "parcel",
+  "version": "1.0.0",
+  "description": "Parcel generator for luxe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Clever-Coding/parcel.git"
+  },
+  "keywords": [
+    "luxe"
+  ],
+  "author": "Zénon Roy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Clever-Coding/parcel/issues"
+  },
+  "homepage": "https://github.com/Clever-Coding/parcel#readme",
+  "dependencies": {
+    "jsonfile": "^2.2.1"
+  }
+}
