@@ -1,23 +1,21 @@
-var parse = require('./lib/parser.js'),
-  path = require('path'),
-  json = require('jsonfile');
+"use strict";
 
-function create(in_dir, out_dir) {
-  if(typeof in_dir == 'undefined'){
-    in_dir = out_dir = 'assets'
-  } else if(typeof out_dir == 'undefined'){
-    out_dir = in_dir
-  }
+const map  = require('./lib/map.js');
+const path = require('path');
 
-  parse(in_dir, function(err, parcel){
-    if (err) {
-      console.log(err);
-    } else {
-      json.writeFile(path.join(out_dir, 'parcel.json'), parcel, function(err){
-        console.log(err);
-      })
-    }
-  })
+module.exports = function (files){
+  return new Promise(function(resolve, reject){
+    let parcel = {};
+
+    files.forEach(function(file){
+      map.forEach(function(type, tester){
+        if (tester.test(file)){
+          parcel[type] = parcel[type] || [];
+          parcel[type].push(type == 'shaders' ? {ps_id: file} : {id: file});
+        }
+      });
+    });
+
+    resolve(parcel);
+  });
 }
-
-module.exports = create;
